@@ -12,11 +12,17 @@ import { Input } from "@/components/Input/input";
 import { useEffect, useState } from "react";
 import { DisplayTemp } from "@/components/DisplayTemp/DisplayTemp";
 import { ButtonConvert } from "@/components/ButtonConvert/ButtonConvert";
+import { useNavigation } from "expo-router";
 
 export default function Index() {
+  const nav = useNavigation();
   const [inputValue, setInputValue] = useState(0);
   const [currentUnit, setCurrentUnit] = useState("°C");
   const [currentBG, setCurrentBG] = useState(coldBackground);
+
+  useEffect(() => {
+    nav.setOptions({ headerShown: false });
+  }, [nav]);
 
   // use effect that watch inputValue and currentUnit
   useEffect(() => {
